@@ -1,6 +1,7 @@
 <script lang="ts">
     import { browser } from "$app/environment";
     import CodeMirror from "$lib/CodeMirror.svelte";
+    import MermaidView from "$lib/MermaidView.svelte";
     import { renderMermaid } from "$lib/mermaid";
     import mermaid from "mermaid";
     import { onMount } from "svelte";
@@ -28,24 +29,33 @@
         diagramCode = e.detail;
     }
 
-    $: diagramCode && !diagramError && renderDiagram();
+    $: diagramCode && !diagramError; // && renderDiagram();
 </script>
 
 <div class="container">
     <div class="editor">
         <CodeMirror bind:doc={diagramCode} on:update={handleUpdate} />
     </div>
-    <span class="chart" bind:this={svgContainer}> </span>
+    <div class="chart">
+        <MermaidView bind:code={diagramCode} />
+    </div>
 </div>
 
 <style>
+    :global(body) {
+        margin: 0;
+        margin-top: 10px;
+    }
+
     .container {
         display: flex;
         height: 100vh;
     }
     .editor {
         flex: 1;
-        padding: 10px;
+        padding: 0;
+        padding-right: 40px;
+        border-right: 1px solid black;
     }
     .chart {
         flex: 2;

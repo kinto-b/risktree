@@ -17,6 +17,7 @@
             border: "none",
             padding: "0",
             backgroundColor: "transparent",
+            "z-index": 1,
         },
         ".cm-scroller": {
             outline: "none",
@@ -30,6 +31,13 @@
         },
         ".cm-activeLine": {
             backgroundColor: "transparent",
+        },
+        ".cm-gutters": {
+            width: "40px",
+            background: "#d5d3d4",
+        },
+        ".cm-lineNumbers": {
+            "padding-left": "15px",
         },
     });
 
@@ -64,10 +72,20 @@
 </script>
 
 <div bind:this={editorContainer}></div>
+<div id="gutter"></div>
 
 <style>
     div {
         padding: 0;
         background-color: transparent;
+    }
+
+    #gutter {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 100%;
+        background: #d5d3d4;
     }
 </style>
