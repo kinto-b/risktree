@@ -1,6 +1,7 @@
 <script lang="ts">
     import { browser } from "$app/environment";
     import CodeMirror from "$lib/CodeMirror.svelte";
+    import InfoPanel from "$lib/InfoPanel.svelte";
     import MermaidView from "$lib/MermaidView.svelte";
     import { renderMermaid } from "$lib/mermaid";
     import mermaid from "mermaid";
@@ -11,10 +12,21 @@
     });
 
     let svgContainer: HTMLElement;
-    let diagramCode: string = `{We score} >|yes: 0.5| [We win!]
-{We score} >|no: 0.5| {We score on retry}
-{We score on retry} >|yes: 0.5| [We win!]
-{We score on retry} >|no: 0.5| [We lose!]`;
+    let diagramCode: string = `
+{Conservatives control lower house} >|yes: 0.5| {Conservatives propose law}
+{Conservatives control lower house} >|no: 0.5| {Progressives propose law}
+
+{Conservatives propose law} >|yes: 0.8| [Law proposed]
+{Progressives propose law} >|yes: 0.4| [Law proposed]
+
+[Law proposed] > {Conservatives control upper house} 
+
+{Conservatives control upper house} >|yes: 0.5| {Conservatives pass law}
+{Conservatives control upper house} >|no: 0.5|  {Progressives pass law}
+
+{Conservatives pass law} >|yes: 0.9| [Law passed]
+{Progressives pass law} >|yes: 0.5| [Law passed]
+`;
     let diagramError: boolean = false;
 
     async function renderDiagram() {
@@ -40,6 +52,7 @@
         <MermaidView bind:code={diagramCode} />
     </div>
 </div>
+<InfoPanel></InfoPanel>
 
 <style>
     :global(body) {

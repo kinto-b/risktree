@@ -9,7 +9,7 @@ export async function renderMermaid(input: string, id: string = "mermaid"): Prom
     let { nodes, edges } = parser.parse(input);
     const graph = new Graph(nodes, edges);
     const diagramCode = graph.diagramCode();
-    console.log(diagramCode);
+    // console.log(diagramCode);
     return mermaid.render(id, diagramCode);
 }
 

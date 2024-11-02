@@ -30,7 +30,7 @@
             code,
             "mermaid-graph",
         );
-        console.log(svg);
+        // console.log(svg);
 
         if (svg.length > 0) {
             handlePanZoom("#mermaid-graph");
