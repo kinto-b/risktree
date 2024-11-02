@@ -1,38 +1,25 @@
-# sv
+# risk tree
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A tool for making probability guesstimates, inspired by [a blog post of John Quiggan's](https://johnquiggin.com/2024/10/28/the-end-of-us-democracy-a-flowchart/) and [nomnoml](https://www.nomnoml.com/).
 
-## Creating a project
+Sometimes you want to know how likely something is, but you don't have any data. The best you can do is to form an educated guess. But you don't have to do that right off! 
 
-If you're seeing this, you've probably already done this step. Congrats!
+It's often easier to estimate probabilities of events which are causally upstream of whatever you're interested in than the thing itself. You can form a more reliable guesstimate using a decision tree and a little bit of math.
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Syntax
 
-# create a new project in my-app
-npx sv create my-app
+Use square brackets to declare events, curly braces to declare choices, and arrows to declare pathways.
+
+```
+{a choice} >|a path: prob| [a state]
 ```
 
-## Developing
+Path labels and/or probabilities may be omitted, e.g.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```
+{a choice} >|: prob| [a state]
 ```
 
-## Building
+## Limitations
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+The graph should not include multiple convergent paths with separate root nodes. If you create a graph like this, you will end up with leaf nodes having greater than 100% probability.
