@@ -7,19 +7,23 @@
 
     let svgContainer: HTMLElement;
     let diagramCode: string = `
-{Conservatives control lower house} >|yes: 0.5| {Conservatives propose law}
-{Conservatives control lower house} >|no: 0.5| {Progressives propose law}
-
-{Conservatives propose law} >|yes: 0.8| [Law proposed]
-{Progressives propose law} >|yes: 0.4| [Law proposed]
+{Conservatives control lower house} 
+  >|yes: 0.5| {Conservatives propose law}
+  >|yes: 0.8| [Law proposed]
+  
+{Conservatives control lower house} 
+  >|no: 0.5| {Progressives propose law}
+  >|yes: 0.4| [Law proposed]
 
 [Law proposed] > {Conservatives control upper house} 
 
-{Conservatives control upper house} >|yes: 0.5| {Conservatives pass law}
-{Conservatives control upper house} >|no: 0.5|  {Progressives pass law}
-
-{Conservatives pass law} >|yes: 0.9| [Law passed]
-{Progressives pass law} >|yes: 0.5| [Law passed]
+{Conservatives control upper house} 
+  >|yes: 0.5| {Conservatives pass law}
+  >|yes: 0.9| [Law passed]
+  
+{Conservatives control upper house} 
+  >|no: 0.5|  {Progressives pass law} 
+  >|yes: 0.5| [Law passed]
 `;
     let diagramError: boolean = false;
 
