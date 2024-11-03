@@ -8,15 +8,17 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		paths: {
+			// to serve static files on GH pages
+			base: '/risktree'
+		}
 	},
 
 	optimizeDeps: {
 		include: ['mermaid'],
 		exclude: ["svelte-codemirror-editor", "codemirror", "@codemirror/language-javascript"],
 	},
-
-	ssr: false
 
 };
 

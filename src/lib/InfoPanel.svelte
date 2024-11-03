@@ -1,10 +1,11 @@
 <script>
+    import { base } from "$app/paths";
     let showPanel = false;
 </script>
 
 <div id="menu">
     <button class="icon-button" on:click={() => (showPanel = !showPanel)}>
-        <img src="/info.svg" alt="Info" width="30" height="30" />
+        <img src="{base}/info.svg" alt="Info" width="30" height="30" />
     </button>
 </div>
 
