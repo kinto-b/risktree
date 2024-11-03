@@ -8,7 +8,7 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter({ strict: false })
+		adapter: adapter()
 	},
 
 	optimizeDeps: {
