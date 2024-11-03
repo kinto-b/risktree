@@ -71,13 +71,19 @@
     }
 </script>
 
-<div bind:this={editorContainer}></div>
+<div id="editor" bind:this={editorContainer}></div>
 <div id="gutter"></div>
 
 <style>
-    div {
+    #editor {
         padding: 0;
         background-color: transparent;
+        padding-right: 40px;
+        border-right: 1px solid black;
+    }
+
+    div {
+        padding: 0;
     }
 
     #gutter {

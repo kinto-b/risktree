@@ -4,12 +4,6 @@
     import InfoPanel from "$lib/InfoPanel.svelte";
     import MermaidView from "$lib/MermaidView.svelte";
     import { renderMermaid } from "$lib/mermaid";
-    import mermaid from "mermaid";
-    import { onMount } from "svelte";
-
-    onMount(() => {
-        mermaid.initialize({ startOnLoad: true });
-    });
 
     let svgContainer: HTMLElement;
     let diagramCode: string = `
@@ -67,8 +61,6 @@
     .editor {
         flex: 1;
         padding: 0;
-        padding-right: 40px;
-        border-right: 1px solid black;
     }
     .chart {
         flex: 2;

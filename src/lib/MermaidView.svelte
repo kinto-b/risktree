@@ -1,15 +1,21 @@
 <script lang="ts">
     import { renderMermaid } from "$lib/mermaid";
+    import mermaid from "mermaid";
+    import { onMount } from "svelte";
     import { fade } from "svelte/transition";
     import panzoom from "svg-pan-zoom";
 
+    onMount(() => {
+        mermaid.initialize({ startOnLoad: true });
+        loaded = true;
+    });
+
     export let code = "";
+    let loaded = false;
     let container: HTMLDivElement;
-    let hide = false;
     let pzoom: typeof panzoom | undefined;
 
     function handlePanZoom(id: string) {
-        hide = true;
         pzoom?.destroy();
         pzoom = undefined;
         void Promise.resolve().then(() => {
@@ -48,7 +54,7 @@
         }
     }
 
-    $: updateDiagram(code);
+    $: loaded && updateDiagram(code);
 </script>
 
 <div id="container" bind:this={container} transition:fade></div>

@@ -8,13 +8,15 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter({ strict: false })
 	},
 
 	optimizeDeps: {
 		include: ['mermaid'],
 		exclude: ["svelte-codemirror-editor", "codemirror", "@codemirror/language-javascript"],
 	},
+
+	ssr: false
 
 };
 
