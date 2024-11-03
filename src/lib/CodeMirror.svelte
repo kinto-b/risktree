@@ -72,26 +72,17 @@
 </script>
 
 <div id="editor" bind:this={editorContainer}></div>
-<div id="gutter"></div>
 
 <style>
     #editor {
         padding: 0;
         background-color: transparent;
+        min-height: 100vh;
         padding-right: 40px;
         border-right: 1px solid black;
     }
 
     div {
         padding: 0;
-    }
-
-    #gutter {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 40px;
-        height: 100%;
-        background: #d5d3d4;
     }
 </style>

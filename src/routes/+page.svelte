@@ -38,6 +38,7 @@
     $: diagramCode && !diagramError; // && renderDiagram();
 </script>
 
+<div id="gutter"></div>
 <div class="container">
     <div class="editor">
         <CodeMirror bind:doc={diagramCode} on:update={handleUpdate} />
@@ -51,7 +52,8 @@
 <style>
     :global(body) {
         margin: 0;
-        margin-top: 10px;
+        /* margin-top: 10px; */
+        min-height: 100vh;
     }
 
     .container {
@@ -64,6 +66,17 @@
     }
     .chart {
         flex: 2;
-        padding: 10px;
+        /* padding: 10px; */
+    }
+
+    #gutter {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 40px;
+        min-height: 100vh;
+        height: 100%;
+        background: #d5d3d4;
+        overflow: hidden;
     }
 </style>

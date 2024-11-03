@@ -67,7 +67,7 @@
         width: 300px; /* Adjust the width as needed */
         height: 100vh;
         background-color: #f0f0f0;
-        padding: 20px;
+        padding: 0 20px 0 20px;
         position: absolute;
         z-index: 1;
         bottom: 0;
@@ -75,7 +75,7 @@
     }
 
     .info-content {
-        margin-top: 20px;
+        top: 20px;
     }
 
     h2 {
